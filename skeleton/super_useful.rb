@@ -41,9 +41,9 @@ end
 class BestFriend
   def initialize(name, yrs_known, fav_pastime)
     if yrs_known < 5
-      raise ArgumentError("You need to know them longer")
+      raise ArgumentError.new("You need to know them longer")
     elsif name.length <= 0 || fav_pastime.length <= 0
-      raise ArgumentError("Input the name or pastime again.")
+      raise ArgumentError.new("Input the name or pastime again.")
     end
 
     @name = name
