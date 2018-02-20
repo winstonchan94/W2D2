@@ -6,6 +6,7 @@ class Board
 
   def initialize
     @grid = Array.new(8) {Array.new(8)}
+    self.populate 
   end
 
   def populate
