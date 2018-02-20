@@ -12,7 +12,7 @@ class NullPiece < Piece
   end
 
   def inspect
-    "| |"
+    " "
   end
 end
 
@@ -43,7 +43,7 @@ class Knight < Piece
 
   end
   def inspect
-    "K"
+    "N"
   end
 end
 
@@ -76,6 +76,6 @@ class King < Piece
   end
 
   def inspect
-    "Kg"
+    "K"
   end
 end
