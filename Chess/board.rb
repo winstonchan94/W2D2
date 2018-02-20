@@ -1,3 +1,5 @@
+require_relative "piece.rb"
+
 class Board
 
   attr_reader :grid
@@ -7,20 +9,16 @@ class Board
   end
 
   def populate
-    @grid[1].each do |place|
-      place = Pawn.new(black)
-    end
+    @grid[1].map! {|el| Pawn.new(:black)}
 
-    @grid[6].each do |place|
-      place = Pawn.new(white)
-    end
+    @grid[6].map! {|el| Pawn.new(:white)}
 
     @grid[2..5].each do |row|
-      row.each {|space| space = NullPiece.new}
+      row.map! {|place| NullPiece.new}
     end
 
-    @grid[0] = special_pieces(black)
-    @grid[7] = special_pieces(white)
+    @grid[0] = special_pieces(:black)
+    @grid[7] = special_pieces(:white)
     end
 
     def special_pieces(color)
@@ -30,11 +28,22 @@ class Board
     end
 
     def move_piece(start_pos, end_pos)
-      if @grid[start_pos].is_a?(NullPiece) || !@grid[start_pos].valid_move(end_pos)
+      if self[start_pos].is_a?(NullPiece)
+       # || !@grid[start_pos].valid_move(end_pos)
         raise ArgumentError.new("Invalid Move, choose again")
       end
 
-      @grid[end_pos] = @grid[start_pos]
-      @grid[start_pos] = NullPiece.new
+      self[end_pos] = self[start_pos]
+      self[start_pos] = NullPiece.new
+    end
+
+    def [](pos)
+      row, col = pos
+      @grid[row][col]
+    end
+
+    def []=(pos, val)
+      row, col = pos
+      @grid[row][col] = val
     end
   end

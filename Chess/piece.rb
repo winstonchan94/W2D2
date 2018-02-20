@@ -1,49 +1,81 @@
 class Piece
 
-  def initialize(argument)
-    @argument = argument
+  def initialize(color)
+    @color = color
   end
 
 end
 
-class NullPiece
-  def initialize(argument)
-    @argument = argument
+class NullPiece < Piece
+  def initialize
+
+  end
+
+  def inspect
+    "| |"
   end
 end
 
-class Pawn
-  def initialize(argument)
-    @argument = argument
+class Pawn < Piece
+  def initialize(color)
+    super(color)
+  end
+
+  def inspect
+    "P"
   end
 end
 
-class Rook
-  def initialize(argument)
-    @argument = argument
+class Rook < Piece
+  def initialize(color)
+    super(color)
+
+  end
+
+  def inspect
+    "R"
   end
 end
 
-class Knight
-  def initialize(argument)
-    @argument = argument
+class Knight < Piece
+  def initialize(color)
+    super(color)
+
+  end
+  def inspect
+    "K"
   end
 end
 
-class Bishop
-  def initialize(argument)
-    @argument = argument
+class Bishop < Piece
+  def initialize(color)
+    super(color)
+
+  end
+
+  def inspect
+    "B"
   end
 end
 
-class Queen
-  def initialize(argument)
-    @argument = argument
+class Queen < Piece
+  def initialize(color)
+    super(color)
+
+  end
+
+  def inspect
+    "Q"
   end
 end
 
-class King
-  def initialize(argument)
-    @argument = argument
+class King < Piece
+  def initialize(color)
+    super(color)
+
+  end
+
+  def inspect
+    "Kg"
   end
 end
