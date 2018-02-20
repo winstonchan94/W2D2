@@ -6,20 +6,20 @@ class Board
 
   def initialize
     @grid = Array.new(8) {Array.new(8)}
-    self.populate 
+    self.populate
   end
 
   def populate
-    @grid[1].map! {|el| Pawn.new(:black)}
+    @grid[1].map! {|el| Pawn.new(:blue)}
 
-    @grid[6].map! {|el| Pawn.new(:white)}
+    @grid[6].map! {|el| Pawn.new(:red)}
 
     @grid[2..5].each do |row|
       row.map! {|place| NullPiece.new}
     end
 
-    @grid[0] = special_pieces(:black)
-    @grid[7] = special_pieces(:white)
+    @grid[0] = special_pieces(:blue)
+    @grid[7] = special_pieces(:red)
     end
 
     def special_pieces(color)

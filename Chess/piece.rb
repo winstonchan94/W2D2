@@ -1,4 +1,7 @@
+require 'colorize'
+
 class Piece
+  attr_reader :color
 
   def initialize(color)
     @color = color
@@ -17,65 +20,43 @@ class NullPiece < Piece
 end
 
 class Pawn < Piece
-  def initialize(color)
-    super(color)
-  end
 
   def inspect
-    "P"
+    "P".colorize(@color)
   end
 end
 
 class Rook < Piece
-  def initialize(color)
-    super(color)
-
-  end
 
   def inspect
-    "R"
+    "R".colorize(@color)
   end
 end
 
 class Knight < Piece
-  def initialize(color)
-    super(color)
 
-  end
   def inspect
-    "N"
+    "N".colorize(@color)
   end
 end
 
 class Bishop < Piece
-  def initialize(color)
-    super(color)
-
-  end
 
   def inspect
-    "B"
+    "B".colorize(@color)
   end
 end
 
 class Queen < Piece
-  def initialize(color)
-    super(color)
-
-  end
 
   def inspect
-    "Q"
+    "Q".colorize(@color)
   end
 end
 
 class King < Piece
-  def initialize(color)
-    super(color)
-
-  end
 
   def inspect
-    "K"
+    "K".colorize(@color)
   end
 end
