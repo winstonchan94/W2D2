@@ -9,23 +9,27 @@ class Board
     self.populate
   end
 
-  def populate
-    @grid[1].map! {|el| Pawn.new(:blue)}
+  def inspect
+    nil
+  end
 
-    @grid[6].map! {|el| Pawn.new(:red)}
+  def populate
+    @grid[1].map! {|el| Pawn.new(:blue, self)}
+
+    @grid[6].map! {|el| Pawn.new(:red, self)}
 
     @grid[2..5].each do |row|
       row.map! {|place| NullPiece.new}
     end
 
-    @grid[0] = special_pieces(:blue)
-    @grid[7] = special_pieces(:red)
+    @grid[0] = special_pieces(:blue, self)
+    @grid[7] = special_pieces(:red, self)
     end
 
-    def special_pieces(color)
-      [Rook.new(color), Knight.new(color), Bishop.new(color),
-         Queen.new(color), King.new(color), Bishop.new(color),
-       Knight.new(color), Rook.new(color)]
+    def special_pieces(color, board)
+      [Rook.new(color, board), Knight.new(color, board), Bishop.new(color, board),
+         Queen.new(color, board), King.new(color, board), Bishop.new(color, board),
+       Knight.new(color, board), Rook.new(color, board)]
     end
 
     def move_piece(start_pos, end_pos)
