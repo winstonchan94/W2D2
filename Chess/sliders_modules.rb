@@ -13,7 +13,7 @@ module Slider
         new_pos = pos.dup
         next
       else
-        new_dirs << new_pos
+        new_dirs << dir
         new_pos = pos.dup
       end
     end
@@ -30,7 +30,7 @@ module Slider
         new_pos = pos.dup
         next
       else
-        new_dirs << new_pos
+        new_dirs << dir
         new_pos = pos.dup
       end
     end
@@ -38,20 +38,20 @@ module Slider
     new_dirs
   end
 
-  def moves(move_type)
+  def moves
     current_pos = self.pos
     possible_moves = []
 
-    case move_type
-    when "horizontal"
+    case self.move_type
+    when :rook
       horizontal_dirs(current_pos).each do |pos|
         possible_moves += grow_unblocked_moves_in_dir(pos[0], pos[1])
       end
-    when "diagonal"
+    when :bishop
       diagonal_dirs(current_pos).each do |pos|
         possible_moves += grow_unblocked_moves_in_dir(pos[0], pos[1])
       end
-    when "both"
+    when :queen
       (horizontal_dirs(current_pos) + diagonal_dirs(current_pos)).each do |pos|
         possible_moves += grow_unblocked_moves_in_dir(pos[0], pos[1])
       end

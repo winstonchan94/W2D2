@@ -1,3 +1,7 @@
 load "display.rb"
 a = Display.new
 rook = a.board[[0,0]]
+queen = a.board[[0,3]]
+bishop = a.board[[7,2]]
+king = a.board[[0,4]]
+knight = a.board[[0,1]]

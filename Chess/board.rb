@@ -26,6 +26,7 @@ class Board
   end
 
   def populate
+
     @grid[1].map! {|el| Pawn.new(:blue, self)}
 
     @grid[6].map! {|el| Pawn.new(:red, self)}
