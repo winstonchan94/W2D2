@@ -1,0 +1,3 @@
+load "display.rb"
+a = Display.new
+rook = a.board[[0,0]]

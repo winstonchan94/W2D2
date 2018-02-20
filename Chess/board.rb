@@ -1,4 +1,9 @@
-require_relative "piece.rb"
+require_relative "queen"
+require_relative "bishop"
+require_relative "king"
+require_relative "knight"
+require_relative "rook"
+require_relative "pawn"
 
 class Board
 
@@ -7,6 +12,13 @@ class Board
   def initialize
     @grid = Array.new(8) {Array.new(8)}
     self.populate
+
+    @grid.each_index do |row|
+      @grid[row].each_index do |col|
+        (self[[row, col]]).position([row, col])
+      end
+    end
+
   end
 
   def inspect

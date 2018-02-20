@@ -1,3 +1,4 @@
+
 module Slider
   require 'byebug'
   HORIZONTAL_DIRS = [[1, 0], [-1, 0], [0, 1], [0, -1]]
@@ -38,7 +39,7 @@ module Slider
   end
 
   def moves(move_type)
-    current_pos = self.position
+    current_pos = self.pos
     possible_moves = []
 
     case move_type
@@ -60,13 +61,15 @@ module Slider
   end
 
   def grow_unblocked_moves_in_dir(dx, dy)
-    new_pos = [self.position[0] + dx, self.position[1] + dy]
+    new_pos = [self.pos[0] + dx, self.pos[1] + dy]
 
     results = []
 
-    until (new_pos[0] >= 8 || new_pos[0] < 0) || (new_pos[1] >= 8 || new_pos[1] < 0)
-      || self.board[[new_pos]].color != self.color
-      if self.board[[new_pos]].class != NullPiece
+    until (new_pos[0] >= 8 || new_pos[0] < 0) ||
+      (new_pos[1] >= 8 || new_pos[1] < 0)
+      break if self.board[new_pos].color == self.color
+
+      if self.board[new_pos].class != NullPiece
         results << new_pos
         break
       else
