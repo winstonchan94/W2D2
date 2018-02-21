@@ -46,12 +46,12 @@ class Board
     end
 
     def move_piece(start_pos, end_pos)
-      if self[start_pos].is_a?(NullPiece)
-       # || !@grid[start_pos].valid_move(end_pos)
+      if self[start_pos].is_a?(NullPiece) || !self[start_pos].moves.include?(end_pos)
         raise ArgumentError.new("Invalid Move, choose again")
       end
 
       self[end_pos] = self[start_pos]
+      self[end_pos].position(end_pos)
       self[start_pos] = NullPiece.new
     end
 

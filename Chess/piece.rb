@@ -1,10 +1,12 @@
 require 'colorize'
+require 'byebug'
 
 class Piece
   attr_reader :color
   attr_reader :board
   attr_reader :pos
   def initialize(color, board)
+
     @color = color
     @board = board
     @pos = []
@@ -17,6 +19,7 @@ class Piece
 end
 
 class NullPiece < Piece
+  # include Singleton
   def initialize
 
   end
