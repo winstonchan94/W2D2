@@ -13,7 +13,7 @@ class Pawn < Piece
   end
 
   def moves
-    result = []
+    results = []
     forward = forward_steps
     attacks = side_attacks
 
@@ -32,10 +32,10 @@ class Pawn < Piece
 
   def forward_steps
     current_pos = self.pos
-    steps = [[current_pos[0], current_pos[1] + @forward_dir]]
+    steps = [[current_pos[0] + @forward_dir, current_pos[1]]]
 
     if current_pos[0] == 1 || current_pos[0] == 6
-      steps << [current_pos[0], current_pos[1] + (@forward_dir * 2)]
+      steps << [current_pos[0] + (@forward_dir * 2), current_pos[1]]
     end
 
     steps
@@ -44,8 +44,8 @@ class Pawn < Piece
   def side_attacks
     current_pos = self.pos
     attacks = [
-    [current_pos[0] - 1, current_pos[1] + @forward_dir],
-    [current_pos[0] + 1, current_pos[1] + @forward_dir]
+    [current_pos[0] + @forward_dir, current_pos[1] - 1],
+    [current_pos[0] + @forward_dir, current_pos[1] + 1]
   ]
   end
 
